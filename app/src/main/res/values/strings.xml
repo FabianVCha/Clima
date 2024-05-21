@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">WeatherViewer</string>
     <string name="action_setting"> Settings</string>
-    <string name="api_key" translatable="false">f96cbbdcfe187a62566c9d84ed22449f</string>
+    <string name="api_key" translatable="false">c753f25c9f7a4b983a15f265e2bb6fd1</string>
     <string name="web_service_url" translatable="false">https://api.openweathermap.org/data/2.5/forecast?q= </string>
+    <string name="weather_condition_image" translatable="false">A graphical representation of the weather conditions</string>
     <string name="url_invalida"> Invalid url</string>
     <string name="imagen_condicion_clima"> Graphical respresentencion of weather</string>
     <string name="alta_temp">Highest: %s</string>
@@ -10,7 +11,7 @@
     <string name="Descripcion_dia" translatable="false">%1$s: %2$s</string>
     <string name="Humedad">Humidity: %s</string>
     <string name="sugerencia_texto">Enter city name (e.g., London, UK)</string>
-    <string name="Error_lecura">Error when data describing the weather</string>
-    <string name="Errro_conection">Errror when conecting to OpenWeatherMap.org</string>
+    <string name="Error_lecura">Unable to read weather data</string>
+    <string name="Errro_conection">Unable to connect to OpenWeatherMap.org</string>
     <string name="Find_location" >Go for</string>
 </resources>

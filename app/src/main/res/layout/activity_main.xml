@@ -1,66 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/_5510474_job297_ploy_07c_pink_01"
-    tools:context=".MainActivity" >
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/_43489753_5c2cf9f2_ac5b_481f_8a13_422fbd77766d"
+  tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="364dp"
-        android:layout_height="685dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+  <TextView
+    android:id="@+id/TEXT_SEARCH"
+    android:layout_width="241dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:text="¿QUE CIUDAD DESEA BUSCAR?"
+    android:textAlignment="center"
+    android:textColor="#FBFBFB"
+    android:textSize="24dp"
+    android:textStrokeWidth="20sp"
+    android:textStrokeColor="@color/black"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/text_app_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:fontFamily="@font/bangers"
-            android:gravity="center_horizontal"
-            android:text="@string/app_name"
-            android:textColor="#F66979"
-            android:textSize="40sp"
-            tools:ignore="TextContrastCheck" />
+  <EditText
+    android:id="@+id/ciudad"
+    android:layout_width="210dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="36dp"
+    android:ems="10"
+    android:hint="INGRESE LA CIUDAD"
+    android:inputType="text"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteY="111dp" />
 
-        <EditText
-            android:id="@+id/text_ingresar_ubicacion"
-            android:layout_width="match_parent"
-            android:layout_height="71dp"
-            android:autofillHints=""
-            android:contentDescription="@string/sugerencia_texto"
-            android:ems="10"
-            android:fontFamily="@font/asul"
-            android:inputType="text"
-            android:text="@string/sugerencia_texto"
-            android:textColor="#77494E"
-            android:textSize="23sp"
-            android:gravity="center_horizontal"
-            tools:ignore="EditableContentDescCheck,LabelFor" />
+  <Button
+    android:id="@+id/BUSQUEDA"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="40dp"
+    android:backgroundTint="#000000"
+    android:text="BUSCAR"
+    android:textColorLink="#000000"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:layout_editor_absoluteY="108dp"
+    tools:ignore="MissingConstraints" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F56979"
-            android:clickable="true"
-            android:contentDescription="@string/Find_location"
-            android:layout_gravity="top"
-            app:srcCompat="@android:drawable/checkbox_on_background" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
+  <ListView
+    android:id="@+id/CLIMA"
+    android:layout_width="358dp"
+    android:layout_height="515dp"
+    android:layout_marginTop="20dp"
+    app:layout_constraintTop_toBottomOf="@+id/BUSQUEDA"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="26dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

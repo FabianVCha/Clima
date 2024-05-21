@@ -1,61 +1,47 @@
 package Corte3.weatherviewer;
 
+import androidx.annotation.NonNull;
+
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.Timer;
 
 public class Weather {
-    public String dayOfWeek;
-    public final String minTemp;
-    public final String maxTemp;
-    public final String humidity;
-    public final String description;
-    public final String iconURL;
 
-    public Weather(String dayOfWeek, String minTemp, String maxTemp, String humidity,
-                   String description, String iconURL) {
-        this.dayOfWeek = dayOfWeek;
-        this.minTemp = formatTemperature(minTemp);
-        this.maxTemp = formatTemperature(maxTemp);
-        this.humidity = formatPercentage(humidity);
+  public final String dayOfWeek;
+  public final String minTemp;
+  public final String maxTemp;
+  public final String iconUrl;
+  public final String description;
+  public final String humidity;
+
+
+    public Weather(long timestamp, double minTemp, double maxTemp, String icon, String description, double humidity) {
+
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setMaximumFractionDigits(0);
+
+        this.dayOfWeek = convertTimeStampToDayOfWeek(timestamp);
+        this.minTemp = numberFormat.format(minTemp)+ "\u00B0f";
+        this.maxTemp = numberFormat.format(maxTemp)+ "\u00B0f";
+        this.iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
         this.description = description;
-        this.iconURL = iconURL;
-
-
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-        try {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(dayOfWeek));
-            this.dayOfWeek = sdf.format(cal.getTime());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.humidity = numberFormat.getPercentInstance().format(humidity/100.0);
     }
 
-    private String formatTemperature(String temp) {
-        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
-        nf.setMaximumFractionDigits(0);
-        return nf.format(Double.parseDouble(temp)) + "\u00B0F";
-    }
-
-    private String formatPercentage(String percent) {
-        double value = Double.parseDouble(percent) / 100.0;
-        NumberFormat nf = NumberFormat.getPercentInstance(Locale.US);
-        return nf.format(value);
-    }
-
-    private static String convertTimeStampToDay(long timeStamp) {
+    @NonNull
+    public static String convertTimeStampToDayOfWeek(long timestamp) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(timeStamp * 1000);
+        calendar.setTimeInMillis(timestamp * 1000);
         TimeZone tz = TimeZone.getDefault();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        sdf.setTimeZone(tz);
+        calendar.add(Calendar.MILLISECOND,
+          tz.getOffset(calendar.getTimeInMillis()));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE");
+        return dateFormat.format(calendar.getTime());
 
-        String dayName = sdf.format(calendar.getTime());
-        return dayName;
     }
 
 }
