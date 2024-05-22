@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
           }catch (IOException e){
-
           }
         }
       } catch (IOException e) {
